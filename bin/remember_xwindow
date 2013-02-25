@@ -1,3 +1,47 @@
 #!/usr/bin/env ruby
 
 require 'remember_xwindow'
+
+include Bini
+include RememberXwindow
+
+Options.on("-e", "--execute [CMD]", "The string to execute when nothing is running.") {|o| Options[:execute] = o}
+Options.on("-s", "--search [SEARCH]", "The search query to be passed to xdotool (formatted like an ARGV).") {|o| Options[:search] = o}
+Options.parse!
+
+bail = false
+
+if !Options[:search]
+  puts "You must supply a search query."
+  bail = true
+end
+
+if !Options[:execute]
+  puts "You must supply a string to execute if it is not running."
+  bail = true
+end
+exit if bail
+
+RememberXwindow.search = Options[:search]
+RememberXwindow.execute = Options[:execute]
+
+if !window
+  Process.fork { `#{RememberXwindow.execute}` }
+  exit
+end
+
+if window
+  if is_visible?
+    if is_focus?
+      hide
+    else
+      focus
+      raisew
+    end
+  else
+    show
+  end
+else
+  puts "didn't start, don't know why."
+end
+
