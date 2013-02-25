@@ -24,7 +24,15 @@ I use this to track multiple urxvt terminals to create a kuake like experience.
 
     $ remember_xwindow --search 'urxvt_one' --execute 'urxvt -name urxvt_one'
 
-If you bind that command to a given key, it will pull up one persistent terminal, if available.  If not, it will spawn one.
+Next, given your WM of choice, bind a key (say ctrl-f1) to that command.
+
+Every time you hit ctrl-f1, you will pull up the same urxvt.
+
+Some other simple examples:
+
+Want your buddy list from pidgin?
+
+    $ remember_xwindow --search 'buddy list' --execute 'pidgin'
 
 ## Contributing
 
