@@ -1,6 +1,6 @@
 # RememberXwindow
 
-TODO: Write a gem description
+This gem provides an executable that supports a single persistent application when the application itself doesn't support it.
 
 ## Installation
 
@@ -18,7 +18,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+The usage only allows for one usecase at the moment, a search string for xdotool and a string to execute.
+
+I use this to track multiple urxvt terminals to create a kuake like experience.
+
+    $ remember_xwindow --search 'urxvt_one' --execute 'urxvt -name urxvt_one'
+
+If you bind that command to a given key, it will pull up one persistent terminal, if available.  If not, it will spawn one.
 
 ## Contributing
 
