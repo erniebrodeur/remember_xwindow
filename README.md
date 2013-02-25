@@ -22,7 +22,7 @@ The usage only allows for one usecase at the moment, a search string for xdotool
 
 I use this to track multiple urxvt terminals to create a kuake like experience.
 
-    $ remember_xwindow --search '\-\-classname urxvt_one' --execute 'urxvt -name urxvt_one'
+    $ remember_xwindow --search 'urxvt_one' --execute 'urxvt -name urxvt_one'
 
 If you bind that command to a given key, it will pull up one persistent terminal, if available.  If not, it will spawn one.
 
